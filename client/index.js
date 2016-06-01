@@ -58,9 +58,52 @@ function makeChartDataRequest(ticker) {
 		dataType: 'json',
 		success: function(data) {
 			console.log(data);
+			renderChart(data);
 		},
 		error: function(err) {
 			console.log('an error occured')
 		}
 	})
+}
+
+function renderChart(data) {
+	var timeAxisData = [], priceAxisData = [];
+	data.forEach(function(element) {
+		timeAxisData.push(element[0]);
+		priceAxisData.push(element[1]);
+	});
+	console.log('time axis ' + timeAxisData);
+	console.log('price axis ' + priceAxisData);
+
+	var buyerData = {
+		labels : timeAxisData,
+		datasets : [
+			{
+				fillColor : "rgba(172,194,132,0.4)",
+				strokeColor : "#ACC26D",
+				pointColor : "#fff",
+				pointStrokeColor : "#9DB86D",
+				data : priceAxisData
+			}
+		]
+	}
+
+	var buyers = document.getElementById('buyers').getContext('2d');
+	var newChart = new Chart(buyers, {
+		type: 'line',
+		data: buyerData,
+		options: {
+			scales: {
+				xAxes: [{
+					time: {
+						unit: 'month'
+					}
+				}]
+			}
+		}
+	});
+
+
+
+
 }

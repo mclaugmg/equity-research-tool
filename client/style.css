@@ -45,3 +45,18 @@ ul {
 ul span {
 	font-weight: bold;
 }
+
+#graph-container {
+	margin-left:auto;
+	margin-right: auto;
+	height: 500px;
+	width:700px;
+}
+
+#buyers {
+	/*position:absolute;*/
+	top:0;
+	left:0;
+	/*height:500px;*/
+	/*width:700px;*/
+}
