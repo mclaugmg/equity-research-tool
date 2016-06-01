@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$(document).keypress(function(e) {
 		if(e.keyCode == '13') makeRequest();
 	})
-	$(document).on('click', '.stock-box', function() {
+	$(document).on('dblclick', '.stock-box', function() {
 		console.log('hearing click to div');
 		$(this).remove();
 	})
@@ -32,11 +32,11 @@ function makeRequest() {
 
 function updatePage(stockData) {
 	$('#NA-alert').remove();
-	// $('ul').remove();
 	$('#main-container').append(`<div class="stock-box"><ul><span>${stockData.name}<span></ul><div>`)
 	for (var key in stockData.data) {
 		$('#main-container div:last-child ul').append(`<li>${stockData.data[key].name}: ${stockData.data[key].data}`) 
 	}
+	$('#ticker-input').val('');
 }
 
 function inputErrorAlert() {
