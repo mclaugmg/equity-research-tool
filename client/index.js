@@ -5,8 +5,15 @@ $(document).ready(function() {
 		if(e.keyCode == '13') makeRequest();
 	})
 	$(document).on('dblclick', '.stock-box', function() {
-		console.log('hearing click to div');
+		console.log('hearing dblclick to div');
 		$(this).remove();
+	})
+	$(document).on('click', '.stock-box', function() {
+		console.log('single click to div');
+		var stockTickerString = $(this).find('li').first().text();
+		var stockTicker = stockTickerString.split(': ')[1];
+		console.log('ticker is ' + stockTicker);
+		makeChartDataRequest(stockTicker);
 	})
 });
 
@@ -41,4 +48,19 @@ function updatePage(stockData) {
 
 function inputErrorAlert() {
 	$('#ticker-form').append('<p id="NA-alert">Ticker does not exist</p>')
+}
+
+function makeChartDataRequest(ticker) {
+	$.ajax({
+		url: 'http://localhost:3000/chartData',
+		type: 'POST',
+		data: {ticker: ticker},
+		dataType: 'json',
+		success: function(data) {
+			console.log(data);
+		},
+		error: function(err) {
+			console.log('an error occured')
+		}
+	})
 }

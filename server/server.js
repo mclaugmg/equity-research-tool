@@ -24,6 +24,8 @@ app.get('/', function(req, res) {
 
 app.post('/', stockDataFetcher.getData);
 
+app.post('/chartData', stockDataFetcher.getChartData);
+
 app.listen(3000);
 
 module.exports = app;
