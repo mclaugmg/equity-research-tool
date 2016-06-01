@@ -1,0 +1,47 @@
+body {
+	margin:0 0;
+	overflow:hidden;
+}
+
+#header {
+	display: block;
+	width:100%;
+	text-align: center;
+	color: black;
+	font-size:50px;
+	font-weight: 600;
+	height:70px;
+	margin-top: 5px;
+	margin-bottom: 50px;
+}
+
+#ticker-form {
+	display: inline-block;
+	background-color: yellow:;
+}
+
+label {
+	display: inline-block;
+}
+
+input {
+	display: inline-block;
+}
+
+#NA-alert {
+	display: inline-block;
+	color: red;
+}
+
+.stock-box {
+	display: inline-block;
+	width:300px;
+}
+
+ul {
+	display:inline-block;
+}
+
+ul span {
+	font-weight: bold;
+}
