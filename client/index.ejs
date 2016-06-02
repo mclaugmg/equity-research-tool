@@ -2,8 +2,9 @@
 
 <head>
 	<meta charset='UTF-8'>
-	<title>Equity Research Tool</title>
+	<title>Market Update</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js'></script>
 	<script src='Chart.min.js'></script> 
 	<script src='chart.js'></script>
@@ -11,18 +12,16 @@
 </head>
 
 <body>
-	<div id='header'>Equity Research Tool</div>
+	<div id='header'>Market Update</div>
 	<div id='main-container'>
 		<div id='form-container'>
 			<div id="ticker-form">
-   				<label for="name">Ticker:</label>
-   				<input type="text" id="ticker-input">
+   				<label for="name"></label>
+   				<input type="text" id="ticker-input" placeholder="Ticker">
   			</div>
 		</div>
 	</div>
-	<div id='graph-container'>
-		<canvas id="buyers"></canvas>
-	</div>
+	<div id='graph-container'></div>
 </body>
 
 </html>

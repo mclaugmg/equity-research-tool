@@ -4,16 +4,19 @@ $(document).ready(function() {
 	$(document).keypress(function(e) {
 		if(e.keyCode == '13') makeRequest();
 	})
-	$(document).on('dblclick', '.stock-box', function() {
-		console.log('hearing dblclick to div');
-		$(this).remove();
+	$(document).on('click', 'ul span', function() {
+		console.log('hearing hover to div');
+		$(this).parent().parent().remove();
 	})
-	$(document).on('click', '.stock-box', function() {
+	$(document).on('dblclick', '.stock-box', function() {
 		console.log('single click to div');
 		var stockTickerString = $(this).find('li').first().text();
 		var stockTicker = stockTickerString.split(': ')[1];
 		console.log('ticker is ' + stockTicker);
 		makeChartDataRequest(stockTicker);
+	})
+	$(document).on('click', 'canvas', function() {
+		$('canvas').remove();
 	})
 });
 
@@ -39,7 +42,7 @@ function makeRequest() {
 
 function updatePage(stockData) {
 	$('#NA-alert').remove();
-	$('#main-container').append(`<div class="stock-box"><ul><span>${stockData.name}<span></ul><div>`)
+	$('#main-container').append(`<div class="stock-box"><ul><span>${stockData.name}</span></ul><div>`)
 	for (var key in stockData.data) {
 		$('#main-container div:last-child ul').append(`<li>${stockData.data[key].name}: ${stockData.data[key].data}`) 
 	}
@@ -58,7 +61,7 @@ function makeChartDataRequest(ticker) {
 		dataType: 'json',
 		success: function(data) {
 			console.log(data);
-			renderChart(data);
+			renderChart(data.dataArray, data.name);
 		},
 		error: function(err) {
 			console.log('an error occured')
@@ -66,44 +69,55 @@ function makeChartDataRequest(ticker) {
 	})
 }
 
-function renderChart(data) {
+function renderChart(data, stockTicker) {
+	$('#graph-container').append('<canvas id="buyers"></canvas>');
 	var timeAxisData = [], priceAxisData = [];
 	data.forEach(function(element) {
 		timeAxisData.push(element[0]);
 		priceAxisData.push(element[1]);
 	});
-	console.log('time axis ' + timeAxisData);
-	console.log('price axis ' + priceAxisData);
-
+	timeAxisData = timeAxisData.reverse();
+	priceAxisData = priceAxisData.reverse();
 	var buyerData = {
 		labels : timeAxisData,
 		datasets : [
 			{
-				fillColor : "rgba(172,194,132,0.4)",
-				strokeColor : "#ACC26D",
-				pointColor : "#fff",
-				pointStrokeColor : "#9DB86D",
+				backgroundColor : "#4B8372",
+				borderColor: "#0B3f2f",
+				pointRadius: 0,
 				data : priceAxisData
 			}
 		]
 	}
+
+	Chart.defaults.global.defaultFontColor = 'white';
 
 	var buyers = document.getElementById('buyers').getContext('2d');
 	var newChart = new Chart(buyers, {
 		type: 'line',
 		data: buyerData,
 		options: {
+			title: {
+				display: true,
+				text: stockTicker,
+				fontColor: 'white',
+				fontSize: 30
+			}, 
+			legend: {
+				display: false
+			},
 			scales: {
 				xAxes: [{
-					time: {
-						unit: 'month'
+					gridLines: {
+						color: 'white'
 					}
-				}]
+				}],
+				yAxes: [{
+					gridLines: {
+						color: 'white'
+					}
+				}],
 			}
 		}
 	});
-
-
-
-
 }

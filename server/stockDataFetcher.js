@@ -34,11 +34,11 @@ stockDataFetcher.getChartData = function(req, res, next) {
 	request(url, function(error, response, body) {
 		if (error) console.log('error occured!');
 		var rawData = JSON.parse(body).query.results.quote;
-		var stockData = [];
+		var stockData = {dataArray: [], name: req.body.ticker};
 		rawData.forEach(function(dataObject) {
 			date = dataObject.Date;
 			closingPrice = dataObject.Close;
-			stockData.push([date, closingPrice]);
+			stockData.dataArray.push([date, closingPrice]);
 		})
 		res.send(stockData);
 		next();

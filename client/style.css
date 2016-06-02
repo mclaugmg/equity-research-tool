@@ -1,6 +1,8 @@
 body {
 	margin:0 0;
 	overflow:hidden;
+	background: -webkit-linear-gradient(left top, #E2EEE2, #EBF9EB);
+    font-family: 'Lato', serif;
 }
 
 #header {
@@ -8,16 +10,23 @@ body {
 	width:100%;
 	text-align: center;
 	color: black;
-	font-size:50px;
-	font-weight: 600;
+	font-size:45px;
+	font-weight: 800;
 	height:70px;
-	margin-top: 5px;
-	margin-bottom: 50px;
+	margin-top: 25px;
+	margin-bottom: 0px;
+}
+
+#main-container {
+	position: relative;
+	width: 100%;
 }
 
 #ticker-form {
+	width:500px;
 	display: inline-block;
-	background-color: yellow:;
+	margin-left:auto;
+	margin-right: auto;
 }
 
 label {
@@ -26,6 +35,17 @@ label {
 
 input {
 	display: inline-block;
+	border-radius: 5px;
+	margin-left:620px;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	font-size: 25px;
+}
+
+input:focus {
+	outline:none;
+
 }
 
 #NA-alert {
@@ -35,7 +55,14 @@ input {
 
 .stock-box {
 	display: inline-block;
+	margin-left:auto;
+	margin-right:auto;
 	width:300px;
+}
+
+.stock-box:hover {
+	border: 1px black solid;
+	border-radius:3px;
 }
 
 ul {
@@ -47,16 +74,20 @@ ul span {
 }
 
 #graph-container {
+	position: absolute;
 	margin-left:auto;
 	margin-right: auto;
-	height: 500px;
-	width:700px;
+	height: 650px;
+	width:900px;
+	left:275px;
+	top: 375px;
 }
 
 #buyers {
-	/*position:absolute;*/
-	top:0;
-	left:0;
-	/*height:500px;*/
-	/*width:700px;*/
+
+}
+
+canvas {
+	background-color: #032303;
+	border-radius: 10px;
 }
