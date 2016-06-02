@@ -70,6 +70,7 @@ function makeChartDataRequest(ticker) {
 }
 
 function renderChart(data, stockTicker) {
+	$('canvas').remove();
 	$('#graph-container').append('<canvas id="buyers"></canvas>');
 	var timeAxisData = [], priceAxisData = [];
 	data.forEach(function(element) {

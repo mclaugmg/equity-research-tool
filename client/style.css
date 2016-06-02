@@ -11,9 +11,9 @@ body {
 	text-align: center;
 	color: black;
 	font-size:45px;
-	font-weight: 800;
+	font-weight: 400;
 	height:70px;
-	margin-top: 25px;
+	margin-top: 15px;
 	margin-bottom: 0px;
 }
 
@@ -36,9 +36,9 @@ label {
 input {
 	display: inline-block;
 	border-radius: 5px;
-	margin-left:620px;
-	width: 200px;
-	height: 40px;
+	margin-left:632px;
+	width: 175px;
+	height: 35px;
 	text-align: center;
 	font-size: 25px;
 }
@@ -58,6 +58,8 @@ input:focus {
 	margin-left:auto;
 	margin-right:auto;
 	width:300px;
+	margin-left:40px;
+	margin-top:15px;
 }
 
 .stock-box:hover {
@@ -67,10 +69,18 @@ input:focus {
 
 ul {
 	display:inline-block;
+	list-style: none;
 }
 
 ul span {
 	font-weight: bold;
+	font-size:20px;
+	padding-bottom:10px;
+	margin-left:-10px;
+}
+
+li {
+	margin-top:4px;
 }
 
 #graph-container {
@@ -79,15 +89,14 @@ ul span {
 	margin-right: auto;
 	height: 650px;
 	width:900px;
-	left:275px;
-	top: 375px;
+	left:265px;
+	top: 365px;
 }
 
-#buyers {
-
-}
 
 canvas {
 	background-color: #032303;
 	border-radius: 10px;
+	opacity: 1;
+	padding:10px;
 }
