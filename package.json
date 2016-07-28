@@ -4,7 +4,7 @@
   "description": "Equity research tool",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "node_modules/.bin/gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

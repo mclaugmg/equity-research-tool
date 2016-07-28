@@ -1,31 +1,31 @@
 const express = require('express');
+const app = express();
+const server = require('http').Server(app); // eslint-disable-line
+const port = process.env.PORT || 3000;
 const path = require('path');
-const bodyParser = require('body-parser');
-const request = require('request');
-const mongoose = require('mongoose');
-const stockDataFetcher = require('./stockDataFetcher');
 
-var app = express();
+/* ----------------------------------
+ * -----   Global Middleware   ------
+ * ---------------------------------- */
 
-app.set('view engine', 'ejs');
+app.use(express.static(path.join(`${__dirname}/../client`)));
 
-app.use(express.static(__dirname + './../client/')); 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+/* ----------------------------------
+ * --------      Routes      --------
+ * ---------------------------------- */
 
 app.get('/', function(req, res) {
-  console.log('rendering html');
-  res.render('./../client/index');
+  res.sendFile('./../client/index.html');
 });
 
-app.post('/', stockDataFetcher.getData);
+// app.post('/', stockDataFetcher.getData);
 
-app.post('/chartData', stockDataFetcher.getChartData);
+// app.post('/chartData', stockDataFetcher.getChartData);
 
-app.listen(3000);
+/* ----------------------------------
+ * --------      Server      --------
+ * ---------------------------------- */
 
-module.exports = app;
+server.listen(port, () => {
+  console.log(`Listening on port ${port}`); // eslint-disable-line
+});
