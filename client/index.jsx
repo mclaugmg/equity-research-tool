@@ -2,13 +2,12 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 // require components
-const Header = require('./main/header.jsx');
+const Header = require('./header.jsx');
 
 const App = React.createClass({
   getInitialState() {
     return {
       tickers: [],
-      },
     };
   },
 
@@ -16,9 +15,9 @@ const App = React.createClass({
   /* ---       Lifecycle Events       --- */
   /* ------------------------------------ */
 
-  componentDidMount() {
+  // componentDidMount() {
 
-  },
+  // },
 
   /* ------------------------------------ */
   /* ----       Event Handlers       ---- */
