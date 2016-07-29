@@ -2,7 +2,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 // require components
-const Header = require('./header.jsx');
+const Header = require('./components/header.jsx');
+const Search = require('./components/search.jsx');
+const Tiles = require('./components/tiles.jsx');
 
 const App = React.createClass({
   getInitialState() {
@@ -16,14 +18,11 @@ const App = React.createClass({
   /* ------------------------------------ */
 
   // componentDidMount() {
-
   // },
 
   /* ------------------------------------ */
   /* ----       Event Handlers       ---- */
   /* ------------------------------------ */
-
-
 
   /* ------------------------------------ */
   /* ----           Render           ---- */
@@ -32,16 +31,10 @@ const App = React.createClass({
   render() {
     return (
       <div id="app">
-        <VisibilityBox isVisible={this.state.isVisible} />
-        <ConnectionInfo connections={this.state.connections} />
-        <Iacto
-          connections={this.state.connections}
-          visibilityUpdate={this.visibilityUpdate}
-          visibilityId={'iacto'}
-        />
-        <Umbra
-          visibilityUpdate={this.visibilityUpdate}
-          visibilityId={'umbra'}
+        <Header />
+        <Search />
+        <Tiles 
+          stocks={this.state.tickers}
         />
       </div>
     );
