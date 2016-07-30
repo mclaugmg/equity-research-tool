@@ -30,7 +30,7 @@ const App = React.createClass({
       const ticker = document.getElementById('search').innerHTML.toUpperCase();
       console.log(ticker);
       $.ajax({
-        url: `http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22SCTY%22%29&env=store://datatables.org/alltableswithkeys`,
+        url: `http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22${ticker}%22%29&env=store://datatables.org/alltableswithkeys`,
         type: 'GET',
         dataType: 'xml',
         success: data => {
@@ -51,15 +51,16 @@ const App = React.createClass({
       this.name = name;
       this.data = data;
     };
-    const stockData = { name: rawData.query.results, data: {} };
-    stockData.data.symbol = new Information('Ticker', rawData.Symbol);
-    stockData.data.dailyPercentChange = new Information('Today', rawData.PercentChange);
-    stockData.data.PERatio = new Information('P/E Ratio', rawData.PERatio);
-    stockData.data.marketCap = new Information('Market Cap', rawData.MarketCapitalization);
-    stockData.data.dividendYield = new Information('Dividend Yield', rawData.DividendYield);
-    stockData.data.avgVolume = new Information('Average Daily Volume', rawData.AverageDailyVolume);
-    stockData.data.volume = new Information('Volume', rawData.Volume);
-    this.setState({ tickers: currentTickers.push(stockData) });
+    const stockData = { name: results.Name, data: {} };
+    stockData.data.symbol = new Information('Ticker', results.Symbol);
+    stockData.data.dailyPercentChange = new Information('Today', results.PercentChange);
+    stockData.data.PERatio = new Information('P/E Ratio', results.PERatio);
+    stockData.data.marketCap = new Information('Market Cap', results.MarketCapitalization);
+    stockData.data.dividendYield = new Information('Dividend Yield', results.DividendYield);
+    stockData.data.avgVolume = new Information('Average Daily Volume', results.AverageDailyVolume);
+    stockData.data.volume = new Information('Volume', results.Volume);
+    currentTickers.push(stockData);
+    this.setState({ tickers: currentTickers });
   },
 
     // Changes XML to JSON
