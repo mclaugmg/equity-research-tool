@@ -5,15 +5,11 @@ const Tiles = React.createClass({
     stocks: React.PropTypes.array.isRequired,
   },
 
-  /* ------------------------------------ */
-  /* ----           Render           ---- */
-  /* ------------------------------------ */
-
-  render() {
+  buildStockArray() {
     const stocks = this.props.stocks;
-    const StockArray = stocks.map(stock => {
+    return stocks.map(stock => {
       return (<div className="stock-tile">
-        <h2>{stock.data.symbol}</h2>
+        <h2>{stock.data.symbol.data}</h2>
         <h3>{stock.name}</h3>
         <p><span>P/E Ratio:</span>{stock.data.PERatio}</p>
         <p><span>Market Cap:</span>{stock.data.marketCap}</p>
@@ -22,9 +18,17 @@ const Tiles = React.createClass({
         <p><span>Avg Volume:</span>{stock.data.avgVolume}</p>
       </div>);
     });
+  },
+
+  /* ------------------------------------ */
+  /* ----           Render           ---- */
+  /* ------------------------------------ */
+
+  render() {
+    const StockArray = this.buildStockArray();
     return (
       <div id="tile-container">
-        <StockArray />
+        {StockArray}
       </div>
     );
   },
