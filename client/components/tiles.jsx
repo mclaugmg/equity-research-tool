@@ -10,12 +10,25 @@ const Tiles = React.createClass({
     return stocks.map(stock => {
       return (<div className="stock-tile">
         <h2>{stock.data.symbol}</h2>
-        <h3>{stock.name}</h3>
-        <p><span>P/E Ratio:</span>{stock.data.PERatio}</p>
-        <p><span>Market Cap:</span>{stock.data.marketCap}</p>
-        <p><span>Yield:</span>{stock.data.dividendYield}</p>
-        <p><span>Volume:</span>{stock.data.volume}</p>
-        <p><span>Avg Volume:</span>{stock.data.avgVolume}</p>
+        <h4>{stock.name}</h4>
+        <div className="info-container">
+          <p><span className="category">Today:</span><span className="stock-data">{stock.data.dailyPercentChange}</span></p>
+        </div>
+        <div className="info-container">
+          <p><span className="category">P/E Ratio:</span><span className="stock-data">{stock.data.PERatio}</span></p>
+        </div>
+        <div className="info-container">
+          <p><span className="category">Market Cap:</span><span className="stock-data">{stock.data.marketCap}</span></p>
+        </div>
+        <div className="info-container">
+          <p><span className="category">Yield:</span><span className="stock-data">{stock.data.dividendYield}</span></p>
+        </div>
+        <div className="info-container">
+          <p><span className="category">Volume:</span><span className="stock-data">{stock.data.volume}</span></p>
+        </div>
+        <div className="info-container">
+          <p><span className="category">Avg Volume:</span><span className="stock-data">{stock.data.avgVolume}</span></p>
+        </div>
       </div>);
     });
   },

@@ -31,7 +31,6 @@ const App = React.createClass({
       console.log('tick is', ticker);
       $.ajax({
         url: `http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22${ticker}%22%29&format=json&env=store://datatables.org/alltableswithkeys`,
-        // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22MSFT%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
         type: 'GET',
         dataType: 'json',
         success: data => {

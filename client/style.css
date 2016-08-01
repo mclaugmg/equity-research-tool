@@ -1,7 +1,55 @@
 body {
 	font-family: sans-serif;
-}  
-	
+}
+
+	/* ------------------------------------ */
+  /* -----------     Tiles    ----------- */
+  /* ------------------------------------ */
+
+#tile-container {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height:250px;
+	border-bottom: 1px solid black;
+}
+
+.stock-tile {
+	display: inline-block;
+	border: 1px solid black;
+	height: 225px;
+	width:180px;
+	margin:0 15px;
+}
+
+.stock-tile h2 {
+	margin:3px 0;
+	text-align: center;
+}
+
+.stock-tile h4 {
+	margin:3px 0;
+	text-align: center;	
+}
+
+.info-container {
+	display:block;
+	height:20px;
+}
+
+.stock-tile p {
+	margin: 3px 0;
+}
+
+.category {
+	float:left;
+	font-weight: 600;
+}
+
+.stock-data {
+	float:right;
+}
+
 	/* ------------------------------------ */
   /* --------     Search Bar     -------- */
   /* ------------------------------------ */
