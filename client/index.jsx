@@ -27,8 +27,8 @@ const App = React.createClass({
 
   handleSearch(keyUpEvent) {
     if (keyUpEvent.keyCode === 13) {
-      const ticker = document.getElementById('search').innerHTML.toUpperCase();
-      console.log(ticker);
+      const ticker = document.getElementById('search').value;
+      console.log('tick is', ticker);
       $.ajax({
         url: `http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22${ticker}%22%29&env=store://datatables.org/alltableswithkeys`,
         type: 'GET',
@@ -44,8 +44,10 @@ const App = React.createClass({
   },
 
   addStockData(rawData) {
-    const results = rawData.query.results;
+    const results = rawData.query.results.quote;
     console.log('adding data');
+    console.log(rawData);
+    console.log(results);
     const currentTickers = this.state.tickers;
     const Information = (name, data) => {
       this.name = name;
@@ -59,6 +61,7 @@ const App = React.createClass({
     stockData.data.dividendYield = new Information('Dividend Yield', results.DividendYield);
     stockData.data.avgVolume = new Information('Average Daily Volume', results.AverageDailyVolume);
     stockData.data.volume = new Information('Volume', results.Volume);
+    console.log(stockData);
     currentTickers.push(stockData);
     this.setState({ tickers: currentTickers });
   },
