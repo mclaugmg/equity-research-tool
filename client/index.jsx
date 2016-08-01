@@ -46,7 +46,6 @@ const App = React.createClass({
 
   addStockData(rawData) {
     const results = rawData.query.results.quote;
-    console.log('results are ', results);
     const currentTickers = this.state.tickers;
     const Information = (name, data) => {
       this.name = name;
@@ -60,7 +59,6 @@ const App = React.createClass({
     stockData.data.dividendYield = results.DividendYield;
     stockData.data.avgVolume = results.AverageDailyVolume;
     stockData.data.volume = results.Volume;
-    console.log('stockdata object is ', stockData);
     currentTickers.push(stockData);
     this.setState({ tickers: currentTickers });
   },
