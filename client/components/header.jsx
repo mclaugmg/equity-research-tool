@@ -7,7 +7,7 @@ const Header = React.createClass({
 
   render() {
     return (
-      <div id="header" style={{ height: '100px', border: '1px solid black' }}>
+      <div id="header" style={{ borderBottom: '1px solid black' }}>
         <h1>mr. market</h1>
       </div>
     );
