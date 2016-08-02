@@ -11,6 +11,7 @@ const App = React.createClass({
   getInitialState() {
     return {
       tickers: [],
+      prices: {},
     };
   },
 
@@ -46,10 +47,6 @@ const App = React.createClass({
   addStockData(rawData) {
     const results = rawData.query.results.quote;
     const currentTickers = this.state.tickers;
-    const Information = (name, data) => {
-      this.name = name;
-      this.data = data;
-    };
     const stockData = { name: results.Name, data: {} };
     stockData.data.symbol = results.Symbol;
     stockData.data.dailyPercentChange = results.PercentChange;
@@ -60,11 +57,25 @@ const App = React.createClass({
     stockData.data.volume = results.Volume;
     currentTickers.push(stockData);
     this.setState({ tickers: currentTickers });
+    this.getHistoricalPrices(stockData.data.symbol);
   },
 
-  // getHistoricalPrices(stock) {
+  getHistoricalPrices(stock) {
+    
+    $.ajax({
+      url: `http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22${ticker}%22%29&format=json&env=store://datatables.org/alltableswithkeys`,
+      type: 'GET',
+      dataType: 'json',
+      success: data => {
+        this.addStockData(data);
+      },
+      error: err => {
+        console.log('an error occured', err);
+      },
+    });
 
-  // }
+
+  },
 
   /* ------------------------------------ */
   /* ----           Render           ---- */
