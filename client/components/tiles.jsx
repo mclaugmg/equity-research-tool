@@ -39,7 +39,6 @@ const Tiles = React.createClass({
 
   render() {
     const StockArray = this.buildStockArray();
-    console.log(StockArray);
     return (
       <div id="tile-container">
         {StockArray}

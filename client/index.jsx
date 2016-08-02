@@ -28,7 +28,7 @@ const App = React.createClass({
   handleSearch(keyUpEvent) {
     if (keyUpEvent.keyCode === 13) {
       const ticker = document.getElementById('search').value;
-      console.log('tick is', ticker);
+      document.getElementById('search').innerHTML = '';
       $.ajax({
         url: `http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22${ticker}%22%29&format=json&env=store://datatables.org/alltableswithkeys`,
         type: 'GET',
