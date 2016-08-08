@@ -46,6 +46,10 @@ body {
 	transition:translate 2s, flex-grow 1000ms;
 }
 
+.stock-tile:hover {
+	background: white;
+}
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }

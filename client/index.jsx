@@ -6,21 +6,19 @@ const $ = require('jquery');
 const Header = require('./components/header.jsx');
 const Search = require('./components/search.jsx');
 const Tiles = require('./components/tiles.jsx');
+const Chart = require('./components/chart.jsx');
 
 const App = React.createClass({
   getInitialState() {
     return {
       tickers: [],
-      prices: {},
+      priceHistoryData: {},
     };
   },
 
   /* ------------------------------------ */
   /* ---       Lifecycle Events       --- */
   /* ------------------------------------ */
-
-  // componentDidMount() {
-  // },
 
   /* ------------------------------------ */
   /* ----       Event Handlers       ---- */
@@ -66,7 +64,7 @@ const App = React.createClass({
       type: 'GET',
       dataType: 'json',
       success: data => {
-        this.storePrices(stock, data);
+        this.storePrices(stock, data.query.results);
       },
       error: err => {
         console.log('an error occured', err);
@@ -75,8 +73,9 @@ const App = React.createClass({
   },
 
   storePrices(stock, data) {
-    console.log(stock);
-    console.log('historical prices are', data);
+    const newData = this.state.priceHistoryData;
+    newData[stock] = data;
+    this.setState({ priceHistoryData: newData });
   },
 
   /* ------------------------------------ */
@@ -93,6 +92,7 @@ const App = React.createClass({
         <Tiles
           stocks={this.state.tickers}
         />
+        <Chart />
       </div>
     );
   },
