@@ -19,8 +19,9 @@
   "homepage": "https://github.com/mclaugmg/equity-research-tool#readme",
   "dependencies": {
     "browser-request": "^0.3.3",
-    "chart.js": "^2.1.4",
-    "express": "^4.13.4"
+    "chart.js": "^1.1.1",
+    "express": "^4.13.4",
+    "react-chartjs": "^0.8.0"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.1.2",
