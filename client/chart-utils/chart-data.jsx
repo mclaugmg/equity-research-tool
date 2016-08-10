@@ -3,17 +3,9 @@ const ChartData = {};
 ChartData.data = {
   datasets: [{
     label: 'Scatter Dataset',
-    data: [{
-      x: -10,
-      y: 0,
-    }, {
-      x: 0,
-      y: 10,
-    }, {
-      x: 10,
-      y: 5,
-    }],
+    data: [1, 2, 3],
   }],
+  labels: [10, 11, 12],
 };
 
 ChartData.options = {

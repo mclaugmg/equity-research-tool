@@ -15,7 +15,6 @@ const Chart = React.createClass({
     return (
       <LineChart
         data={this.props.chartData}
-        options={this.props.chartOptions}
         width="600"
         height="250"
       />
