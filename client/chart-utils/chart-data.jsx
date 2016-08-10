@@ -3,17 +3,18 @@ const ChartData = {};
 ChartData.data = {
   datasets: [{
     label: 'Scatter Dataset',
-    data: [1, 2, 3],
+    data: [1, 2, 3, 2, 10],
   }],
-  labels: [10, 11, 12],
+  labels: [10, 11, 12, 13, 14],
+  xAxisID: 'Data',
+  yAxisID: 'Price',
 };
 
+// options not currently working
 ChartData.options = {
-  scales: {
-    xAxes: [{
-      type: 'linear',
-      position: 'bottom',
-    }],
+  title: {
+    display: true,
+    text: 'Historical Prices',
   },
 };
 

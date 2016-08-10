@@ -80,6 +80,22 @@ const App = React.createClass({
     const newData = this.state.priceHistoryData;
     newData[stock] = data;
     this.setState({ priceHistoryData: newData });
+
+    const priceArray = this.extractData(newData[stock].quote, 'Close');
+    const dateArray = this.extractData(newData[stock].quote, 'Date');
+    const newChartData = ChartData.data;
+    console.log(newChartData);
+    newChartData.datasets[0].data = priceArray;
+    newChartData.labels = dateArray;
+    this.setState({ chartData: newChartData });
+  },
+
+  extractData(stockInfoArray, query) {
+    const extractedData = [];
+    stockInfoArray.reverse().forEach(day => {
+      extractedData.push(day[query]);
+    });
+    return extractedData;
   },
 
   /* ------------------------------------ */

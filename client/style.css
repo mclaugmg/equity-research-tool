@@ -171,3 +171,14 @@ body {
 	color: #4f5b66;
 }
 
+	/* ------------------------------------ */
+  /* -----------     Chart    ----------- */
+  /* ------------------------------------ */
+
+canvas {
+    padding: 0;
+    margin: auto;
+		display: block;
+		margin-top: 50px;
+		background: white;
+}
