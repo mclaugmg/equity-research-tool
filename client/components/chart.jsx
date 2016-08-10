@@ -1,8 +1,10 @@
 const React = require('react');
+const LineChart = require('react-chartjs').Line;
 
 const Chart = React.createClass({
   propTypes: {
-    // handleSearch: React.PropTypes.func.isRequired,
+    chartData: React.PropTypes.object.isRequired,
+    chartOptions: React.PropTypes.object.isRequired,
   },
 
   /* ------------------------------------ */
@@ -11,8 +13,12 @@ const Chart = React.createClass({
 
   render() {
     return (
-      <div className="chart-container">
-      </div>
+      <LineChart
+        data={this.props.chartData}
+        options={this.props.chartOptions}
+        width="600"
+        height="250"
+      />
     );
   },
 });

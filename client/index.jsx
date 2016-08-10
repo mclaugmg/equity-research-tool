@@ -7,12 +7,16 @@ const Header = require('./components/header.jsx');
 const Search = require('./components/search.jsx');
 const Tiles = require('./components/tiles.jsx');
 const Chart = require('./components/chart.jsx');
+// require chart.js utils
+const ChartData = require('./chart-utils/chart-data.jsx');
 
 const App = React.createClass({
   getInitialState() {
     return {
       tickers: [],
       priceHistoryData: {},
+      chartData: ChartData.data,
+      chartOptions: ChartData.options,
     };
   },
 
@@ -92,7 +96,10 @@ const App = React.createClass({
         <Tiles
           stocks={this.state.tickers}
         />
-        <Chart />
+        <Chart
+          chartData={this.state.chartData}
+          chartOptions={this.state.chartOptions}
+        />
       </div>
     );
   },
