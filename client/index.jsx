@@ -80,14 +80,18 @@ const App = React.createClass({
     const newData = this.state.priceHistoryData;
     newData[stock] = data;
     this.setState({ priceHistoryData: newData });
+  },
 
-    const priceArray = this.extractData(newData[stock].quote, 'Close');
-    const dateArray = this.extractData(newData[stock].quote, 'Date');
-    const newChartData = ChartData.data;
-    console.log(newChartData);
-    newChartData.datasets[0].data = priceArray;
-    newChartData.labels = dateArray;
-    this.setState({ chartData: newChartData });
+  displayData(stock) {
+    if (this.state.priceHistoryData[stock]) {
+      const priceArray = this.extractData(this.state.priceHistoryData[stock].quote, 'Close');
+      const dateArray = this.extractData(this.state.priceHistoryData[stock].quote, 'Date');
+      const newChartData = ChartData.data;
+      console.log(newChartData);
+      newChartData.datasets[0].data = priceArray;
+      newChartData.labels = dateArray;
+      this.setState({ chartData: newChartData });
+    }
   },
 
   extractData(stockInfoArray, query) {
@@ -111,6 +115,7 @@ const App = React.createClass({
         />
         <Tiles
           stocks={this.state.tickers}
+          displayData={this.displayData}
         />
         <Chart
           chartData={this.state.chartData}
